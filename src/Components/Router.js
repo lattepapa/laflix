@@ -6,6 +6,7 @@ import {
   Redirect,
   Switch
 } from "react-router-dom";
+import Header from "Components/Header";
 import Home from "Routes/Home";
 import Search from "Routes/Search";
 import TV from "Routes/TV";
@@ -20,12 +21,15 @@ import TV from "Routes/TV";
 // 그 외에 정상적으로 path 속성에 맞춰서 경로 이동을 시도할 경우 그에 맞는 페이지 렌더링을 해준다는 의미이다.
 export default () => (
   <Router>
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/search" component={Search} />
-      <Route path="/tv" exact component={TV} />
-      <Route path="/tv/popular" render={() => <h1>Popular TV programs</h1>} />
-      <Redirect from="*" to="/" />
-    </Switch>
+    <>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/search" component={Search} />
+        <Route path="/tv" exact component={TV} />
+        <Route path="/tv/popular" render={() => <h1>Popular TV programs</h1>} />
+        <Redirect from="*" to="/" />
+      </Switch>
+    </>
   </Router>
 );
