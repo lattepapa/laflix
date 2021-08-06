@@ -7,9 +7,10 @@ import {
   Switch
 } from "react-router-dom";
 import Header from "Components/Header";
-import Home from "Routes/Home";
-import Search from "Routes/Search";
-import TV from "Routes/TV";
+import Home from "Routes/Home/index";
+import TV from "Routes/TV/index";
+import Search from "Routes/Search/index";
+import Detail from "Routes/Detail/index";
 
 // Router는 하나의 child만 가질 수 있으므로, 처음엔 fragment tag <></>로 라우팅들을 감쌌다
 // composition : 두개 이상의 Route를 동시에 렌더링하는 방식
@@ -25,9 +26,11 @@ export default () => (
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/search" component={Search} />
         <Route path="/tv" exact component={TV} />
         <Route path="/tv/popular" render={() => <h1>Popular TV programs</h1>} />
+        <Route path="/search" component={Search} />
+        <Route path="/movie/:id" component={Detail} />
+        <Route path="/tv/:id" component={Detail} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
