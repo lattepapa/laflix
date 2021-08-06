@@ -37,8 +37,9 @@ const SLink = styled(Link)`
     justify-content: center;
 `;
 
-// export 하는 건 다른 컴포넌트를 내부에 가지고 있는 withRouter이다.
-// props에는 { location, match, ... } 등의 정보가 담겨있다.
+// export 하는 건 다른 컴포넌트를 내부에 가지고 있는 withRouter이다.(HoC)
+// props에는 { location, match, history } 등의 정보가 담겨있다.
+// 이러한 정보들을 활용하기 위해서는 반드시 withRouter가 필요하다.
 // 따라서 location 속성의 "pathname" 속성을 활용하여 해당 Routing URL을 따낸다.
 // 그리고 이것을 위의 Item styled-components에 활용한다!
 export default withRouter(({ location: { pathname } }) => (
