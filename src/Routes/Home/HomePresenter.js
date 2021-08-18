@@ -18,8 +18,10 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) =>
     loading ? (<Loader />) : (
         <Container>
             {/* Upcoming Movies Section */}
-            {upcoming && upcoming.length > 0 &&
-                <Section title="Upcoming Movies">
+            {
+                upcoming 
+                && upcoming.length > 0 
+                && <Section title="Upcoming Movies">
                     {upcoming.map(movie => (
                         <Poster
                             key={movie.id}
@@ -34,8 +36,10 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) =>
                 </Section>}
 
             {/* Now Playing Section */}
-            {nowPlaying && nowPlaying.length > 0 &&
-                <Section title="Now Playing">
+            {
+                nowPlaying
+                && nowPlaying.length > 0
+                && <Section title="Now Playing">
                     {nowPlaying.map(movie => (
                         <Poster
                             key={movie.id}
@@ -50,8 +54,10 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) =>
                 </Section>}
 
             {/* Popular Movies Section */}
-            {popular && popular.length > 0 &&
-                <Section title="Popular Movies">
+            {
+                popular
+                && popular.length > 0
+                && <Section title="Popular Movies">
                     {popular.map(movie => (
                         <Poster
                             key={movie.id}

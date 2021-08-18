@@ -34,8 +34,10 @@ const SearchPresenter = ({ movieResults, tvResults, loading, error, searchTerm, 
         {loading ? <Loader /> : (
             <>
                 {/* Movie 검색결과 구현 */}
-                {movieResults && movieResults.length > 0 &&
-                    <Section title="Movie Results">
+                {
+                    movieResults 
+                    && movieResults.length > 0 
+                    && <Section title="Movie Results">
                         {movieResults.map(movie => (
                             <Poster
                                 key={movie.id}
@@ -49,8 +51,10 @@ const SearchPresenter = ({ movieResults, tvResults, loading, error, searchTerm, 
                     </Section>}
 
                 {/* TV Show 검색결과 구현 */}
-                {tvResults && tvResults.length > 0 &&
-                    <Section title="TV Show Results">
+                {
+                    tvResults 
+                    && tvResults.length > 0 
+                    && <Section title="TV Show Results">
                         {tvResults.map(show => (
                             <Poster
                                 key={show.id}
@@ -66,10 +70,13 @@ const SearchPresenter = ({ movieResults, tvResults, loading, error, searchTerm, 
                 {error && <Message text={error} color="e74c3c" />}
 
                 {/* 검색결과가 없을 경우 해당 에러메시지 출력 */}
-                {tvResults && movieResults &&
-                    tvResults.length === 0 &&
-                    movieResults.length === 0 &&
-                    <Message text="Nothing found" color="#95a5a6" />}
+                {
+                    tvResults
+                    && movieResults
+                    && tvResults.length === 0
+                    && movieResults.length === 0
+                    && <Message text="Nothing found" color="#95a5a6" />
+                }
             </>)}
     </Container>
 );

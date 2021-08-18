@@ -14,8 +14,10 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
     loading ? (<Loader />) : (
         <Container>
             {/* Top Rated TV Shows Section */}
-            {topRated && topRated.length > 0 &&
-                <Section title="Top Rated TV Shows">
+            {
+                topRated 
+                && topRated.length > 0 
+                && <Section title="Top Rated TV Shows">
                     {topRated.map(show => (
                         <Poster
                             key={show.id}
@@ -29,8 +31,10 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
                 </Section>}
 
             {/* Popular TV Shows Section */}
-            {popular && popular.length > 0 &&
-                <Section title="Popular TV Shows">
+            {
+                popular 
+                && popular.length > 0 
+                && <Section title="Popular TV Shows">
                     {popular.map(show => (
                         <Poster
                             key={show.id}
@@ -44,8 +48,10 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
                 </Section>}
 
             {/* Airing Today Section */}
-            {airingToday && airingToday.length > 0 &&
-                <Section title="Airing Today">
+            {
+                airingToday 
+                && airingToday.length > 0 
+                && <Section title="Airing Today">
                     {airingToday.map(show => (
                         <Poster
                             key={show.id}
