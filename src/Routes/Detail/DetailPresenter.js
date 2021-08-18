@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
+import Helmet from "react-helmet";
+import Message from "../../Components/Message";
 
 const Container = styled.div`
     height: calc(100vh - 50px);
@@ -71,69 +73,92 @@ const Overview = styled.p`
 
 const DetailPresenter = ({ result, loading, error }) => (
     loading
-    ? <Loader />
-    : <Container>
-        {/* 컨텐츠 백그라운드 이미지 */}
-        <Backdrop
-            bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
-        />
+    ? (
+        <>
+            {/* react-helmet을 활용한 컨텐츠 로딩 헤더지정 */}
+            <Helmet>
+                <title>Loading | Laflix</title>
+            </Helmet>
+            <Loader />
+        </>
+    )
+    : (
+        error
+        ? <Message />
+        : (
+            <Container>
+            {/* react-helmet을 활용한 컨텐츠 상세페이지 헤더지정 */}
+            <Helmet>
+                <title>{
+                    result.original_title
+                    ? result.original_title
+                    : result.original_name
+                    }{" "} | Laflix</title>
+            </Helmet>
 
-        {/* 컨텐츠 정보 */}
-        <Content>
-            {/* 영화 포스터 */}
-            <Cover
-                bgImage={
-                    result.poster_path
-                    ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-                    : require("../../Assets/noposter.png")
-                }
+            {/* 컨텐츠 백그라운드 이미지 */}
+            <Backdrop
+                bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
             />
 
-            {/* 영화 정보 */}
-            <Data>
-                <Title>
-                    {
-                        result.original_title
-                        ? result.original_title
-                        : result.original_name
+            {/* 컨텐츠 정보 */}
+            <Content>
+                {/* 영화 포스터 */}
+                <Cover
+                    bgImage={
+                        result.poster_path
+                        ? `https://image.tmdb.org/t/p/original${result.poster_path}`
+                        : require("../../Assets/noposter.png")
                     }
-                </Title>
-                <ItemContainer>
-                    <Item>
-                        {
-                            result.release_date
-                            ? result.release_date.substring(0, 4)
-                            : result.first_air_date.substring(0, 4)
-                        }
-                    </Item>
-                    
-                    <Divider>·</Divider>
-                    
-                    <Item>
-                        {
-                            result.runtime
-                            ? result.runtime
-                            : result.episode_run_time[0]
-                        } min
-                    </Item>
-                    
-                    <Divider>·</Divider>
+                />
 
-                    <Item>
+                {/* 영화 정보 */}
+                <Data>
+                    <Title>
                         {
-                            result.genres
-                            && result.genres.map((genre, index) =>
-                                index === result.genres.length - 1
-                                ? genre.name
-                                : `${genre.name} | `)
+                            result.original_title
+                            ? result.original_title
+                            : result.original_name
                         }
-                    </Item>
-                </ItemContainer>
+                    </Title>
+                    <ItemContainer>
+                        <Item>
+                            {
+                                result.release_date
+                                ? result.release_date.substring(0, 4)
+                                : result.first_air_date.substring(0, 4)
+                            }
+                        </Item>
+                        
+                        <Divider>·</Divider>
+                        
+                        <Item>
+                            {
+                                result.runtime
+                                ? result.runtime
+                                : result.episode_run_time[0]
+                            } min
+                        </Item>
+                        
+                        <Divider>·</Divider>
 
-                <Overview>{result.overview}</Overview>
-            </Data>
-        </Content>
-    </Container>
+                        <Item>
+                            {
+                                result.genres
+                                && result.genres.map((genre, index) =>
+                                    index === result.genres.length - 1
+                                    ? genre.name
+                                    : `${genre.name} | `)
+                            }
+                        </Item>
+                    </ItemContainer>
+
+                    <Overview>{result.overview}</Overview>
+                </Data>
+            </Content>
+        </Container>
+        )
+    )
 );
 
 DetailPresenter.propTypes = {
