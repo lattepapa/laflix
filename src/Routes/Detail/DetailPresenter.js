@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loader from "Components/Loader";
 import Helmet from "react-helmet";
 import Message from "../../Components/Message";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     height: calc(100vh - 50px);
@@ -71,6 +72,20 @@ const Overview = styled.p`
     width: 50%;
 `;
 
+const ItemEtc = styled.div`
+    width: 50%;
+    display: flex;
+    font-size: 12px;
+    opacity: 0.3;
+`;
+
+const Hr = styled.div`
+    width: 50%;
+    margin: 20px 0;
+    border: 0.1px solid gray;
+    opacity: 0.2;
+`;
+
 const DetailPresenter = ({ result, loading, error }) => (
     loading
     ? (
@@ -114,13 +129,16 @@ const DetailPresenter = ({ result, loading, error }) => (
 
                 {/* 영화 정보 */}
                 <Data>
-                    <Title>
-                        {
-                            result.original_title
-                            ? result.original_title
-                            : result.original_name
-                        }
-                    </Title>
+                    <a href={`https://www.imdb.com/title/${result.imdb_id}`} target="_blank">
+                        <Title>
+                            {
+                                result.original_title
+                                ? result.original_title
+                                : result.original_name
+                            }
+                        </Title>
+                    </a>
+                    
                     <ItemContainer>
                         <Item>
                             {
@@ -154,6 +172,36 @@ const DetailPresenter = ({ result, loading, error }) => (
                     </ItemContainer>
 
                     <Overview>{result.overview}</Overview>
+
+                    <Hr />
+
+                    <ItemContainer>
+                        <ItemEtc>📽 Producted by {" "}
+                            {
+                                result.production_companies.map((company, index) =>
+                                    index === result.production_companies.length - 1
+                                    ? (
+                                        company.origin_country
+                                        ? `${company.name}(${company.origin_country})`
+                                        : company.name
+                                        )
+                                    : (
+                                        company.origin_country
+                                        ? `${company.name}(${company.origin_country}), `
+                                        : `${company.name}, `
+                                    ))
+                            }
+                        </ItemEtc>
+
+                        <br />
+
+                        <ItemEtc>
+                            {
+                                result.belongs_to_collection
+                                && `📂 Belongs to "${result.belongs_to_collection.name}" series`
+                            }
+                        </ItemEtc>
+                    </ItemContainer>
                 </Data>
             </Content>
         </Container>
