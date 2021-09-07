@@ -25,6 +25,23 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Laflix</title>
+
+    <!-- 3rd-party tracker -->
+    <script src="./dop-website-sdk.js"></script>
+    <script type="text/javascript">
+      WDOTInitialization.setConfig({
+          serviceNumber:20045,
+          dotAccessToken:"AgaCWt+E9pKnx5vijC6ZBQ1Eu7eyI7SKp7KIHoxbthlhH08GoUum0K2kmJg7/HuRARcv8D89eyGNzszJgiIzdg==",
+          combackUserLimitDays:14,
+          dotEndPoint:"//trk.analytics.wisetracker.co.kr/web/v1/dataRcv.do",
+          adClkEndPoint:"//trk.analytics.wisetracker.co.kr/ldsys/v1/clickDataRcv.do",
+          adLandingEndPoint:"//app.wisetracker.co.kr",
+          includeUrl:"laflix.netlify.app",
+          excludeUrl:"",
+          referrerExpire:7
+      });
+      WDOTInitialization.init();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,5 +56,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <!-- 3rd-party tracker -->
+    <script type="text/javascript" defer>
+      WDOT.logScreen(window.WDOTParam || {});
+    </script>
   </body>
 </html>

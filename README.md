@@ -1,6 +1,8 @@
 # Laflix
 
 Learning React and ES6 by building a Movie Discovery App.
+Live service is on here!  
+༼ つ ◕_◕ ༽つ [Laflix](https://laflix.netlify.app)
 
 ## Screens
 
@@ -15,7 +17,6 @@ Learning React and ES6 by building a Movie Discovery App.
 - Search
 
 ![04 search](https://user-images.githubusercontent.com/67884699/130447548-293747bc-3a6f-446a-b41b-ba9deb64c6fe.gif)
-
 
 ## API Verbs
 
