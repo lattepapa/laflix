@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect } from "react"
 import Router from "Components/Router"
 import Header from "Components/Header"
 import GlobalStyles from "Components/GlobalStyles"
@@ -22,7 +22,7 @@ function App() {
     WDOTInitialization.init();
   }, []);
 
-  
+
   return (
     <>
       <Router />
