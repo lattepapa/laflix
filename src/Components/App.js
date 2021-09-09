@@ -5,9 +5,8 @@ import GlobalStyles from "Components/GlobalStyles"
 import { WDOTInitialization } from "dop-website-sdk";
 
 function App() {
-  
+  // 3rd-party tracker import
   useEffect(() => {
-     
     WDOTInitialization.setConfig({
         serviceNumber:20045,
         dotAccessToken:"AgaCWt+E9pKnx5vijC6ZBQ1Eu7eyI7SKp7KIHoxbthlhH08GoUum0K2kmJg7/HuRARcv8D89eyGNzszJgiIzdg==",
@@ -21,7 +20,8 @@ function App() {
     });
     WDOTInitialization.init();
   }, []);
-
+  
+  let WDOT = window.WDOT;
 
   return (
     <>
