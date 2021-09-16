@@ -1,5 +1,12 @@
 # Laflix
 
+![Lang](https://img.shields.io/badge/lang-javascript-yellowgreen)
+![Framework](https://img.shields.io/badge/framework-react-skyblue)
+
+![IDE](https://img.shields.io/badge/ide-vscode-blue)
+![Hydra](https://img.shields.io/badge/hail-hydra-red)
+
+
 Learning React and ES6 by building a Movie Discovery App.
 Live service is on here!  
 ༼ つ ◕_◕ ༽つ [Laflix](https://laflix.netlify.app)
